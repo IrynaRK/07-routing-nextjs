@@ -1,4 +1,4 @@
-import NotesClient from "@/app/notes/filter/Notes.client";
+import NotesClient from "@/app/notes/filter/[...slug]/Notes.client";
 import { fetchNotes } from "@/lib/api";
 
 export default async function NotesPage() {

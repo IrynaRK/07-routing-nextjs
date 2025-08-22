@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { NoteTag } from '../types/note';
+import type { NoteTag, Tags } from '../types/note';
 import type { FetchNotesResponse } from '../types/api';
 
 
@@ -45,16 +45,5 @@ export const fetchNoteById = async (id: string): Promise<Tags> => {
 
 };
 
-export type Tags = {
-  id: string;
-  title: string;
-  content: string;
-  tag: NoteTag;
-  createdAt: string;
-  updatedAt: string;
-};
 
-export const getTags = async () => {
-  const res = await axios<Tags[]>(`/notes`);
-  return res.data;
-};
+

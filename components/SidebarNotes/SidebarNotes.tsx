@@ -1,26 +1,27 @@
   import css from "./SidebarNotes.module.css"
-  import Link from "next/link"
-
-import { getTags } from "@/lib/api";
+  import Link from "next/link";
 
 
+
+const Tags = ['All', 'Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
   
  
   const SidebarNotes = async () =>   {
-   const Tag = await getTags();
+   
    
    return ( 
      <ul className={css.menuList}>
-        <li>
-        <Link  href={`../../app/notes/filter/all`} className={css.menuLink}>
-          All NotesClient
-        </Link> </li>
-       {Tag.map(tags => (
-          <li  key={tags.id} className={css.menuItem}>
-            <Link href={`/app/notes/filter/${tags.id}`}>
-            {tags.id}
+       {Tags.map((tag) => {
+
+        const href = tag === 'All' ? '/notes/filter' : '/notes/filter/${tag}';
+        const label = tag === 'All' ? 'All notes' : tag;
+return(
+          <li  key={tag} className={css.menuItem}>
+            <Link href={href} className={css.menuLink}>
+            {label}
             </Link></li>
-        ))}
+            );
+  })}
         
        </ul>
        )

@@ -1,11 +1,14 @@
+'use client';
+
 import css from './Header.module.css';
 import Link from "next/link";
-import { getTags } from '@/lib/api';
 import TagsMenu from '../TagsMenu/TagsMenu';
 
-const Header = async () => {
-  const tags = await getTags();
-  
+
+const tags = ['All', 'Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
+
+  const Header = () => {
+
   const handleClick = () => {
     return tags;
   }
@@ -22,7 +25,8 @@ const Header = async () => {
           <li><Link href="/">Home</Link></li>
           <li><button onClick={handleClick}>Open menu</button></li>
           <li className={css.menuItem}>
-         <TagsMenu tags={tags}></TagsMenu></li>
+         <TagsMenu tags={tags}/>
+         </li>
         </ul>
       </nav>
     </header>
